@@ -1,0 +1,6 @@
+sylius_resource:
+    resources:
+        sylius.main_picture:
+            classes:
+                model: App\Entity\MainPicture
+                repository: App\Repository\MainPictureRepository

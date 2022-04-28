@@ -1,20 +1,32 @@
 doctrine:
     dbal:
+        driver: 'pdo_mysql'
+        charset: UTF8
+        logging: false
+        profiling: false
         url: '%env(resolve:DATABASE_URL)%'
 
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
         #server_version: '13'
     orm:
-        auto_generate_proxy_classes: true
+        auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
             App:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
+                type: xml
+                dir: '%kernel.project_dir%/src/Resources/config/doctrine'
                 prefix: 'App\Entity'
                 alias: App
+        resolve_target_entities:
+            App\Model\AnimeInterface: App\Entity\Anime
+            App\Model\BroadcastInterface: App\Entity\Broadcast
+            App\Model\GenreInterface: App\Entity\Genre
+            App\Model\MainPictureInterface : App\Entity\MainPicture
+            App\Model\StartSeasonInterface : App\Entity\StartSeason
+            App\Model\StudioInterface: App\Entity\Studio
 
 when@test:
     doctrine:

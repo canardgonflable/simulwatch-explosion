@@ -1,0 +1,10 @@
+services:
+    app.command.import_anime:
+        class: App\Command\ImportAnimeCommand
+        arguments:
+            $httpClient: '@http_client'
+            $entityManager: '@doctrine.orm.entity_manager'
+            $animeRepository: '@sylius.repository.anime'
+            $studioRepository: '@sylius.repository.studio'
+            $genreRepository: '@sylius.repository.genre'
+        tags: ['console.command']

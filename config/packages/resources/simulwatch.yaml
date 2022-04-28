@@ -1,0 +1,6 @@
+sylius_resource:
+    resources:
+        sylius.simulwatch:
+            classes:
+                model: App\Entity\Simulwatch
+                repository: App\Repository\SimulwatchRepository

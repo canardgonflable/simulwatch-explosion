@@ -1,21 +1,46 @@
 version: '3'
 
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-13}-alpine
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ChangeMe}
-      POSTGRES_USER: ${POSTGRES_USER:-symfony}
-    volumes:
-      - db-data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+    database:
+        container_name: "database"
+        image: mariadb:latest
+        restart: always
+        ports:
+            - 3307:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: simulwatch_explosion
+            MYSQL_USER: dev
+            MYSQL_PASSWORD: dev
 
-volumes:
-###> doctrine/doctrine-bundle ###
-  db-data:
-###< doctrine/doctrine-bundle ###
+    php:
+        container_name: "php-fpm"
+        restart: on-failure
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        build:
+            context: docker/php
+        environment:
+            - APP_ENV=${APP_ENV}
+            - APP_SECRET=${APP_SECRET}
+        volumes:
+            - ./:/var/www
+            - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+            - ./docker/php/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+
+        depends_on:
+            - database
+
+    nginx:
+        container_name: "nginx"
+        restart: on-failure
+        build:
+            context: docker/nginx
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./docker/logs:/var/log
+        depends_on:
+            - php
+        ports:
+            - "80:80"

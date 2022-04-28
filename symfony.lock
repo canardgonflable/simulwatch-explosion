@@ -1,4 +1,10 @@
 {
+    "babdev/pagerfanta-bundle": {
+        "version": "v3.6.1"
+    },
+    "behat/transliterator": {
+        "version": "v1.5.0"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -83,6 +89,33 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.7"
     },
+    "friendsofsymfony/rest-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "2.2",
+            "ref": "fa845143b7e0a4c70aedd1a88c549e6d977e9ae5"
+        }
+    },
+    "gedmo/doctrine-extensions": {
+        "version": "v3.6.0"
+    },
+    "jms/metadata": {
+        "version": "2.6.1"
+    },
+    "jms/serializer": {
+        "version": "3.17.1"
+    },
+    "jms/serializer-bundle": {
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "384cec52df45f3bfd46a09930d6960a58872b268"
+        }
+    },
     "laminas/laminas-code": {
         "version": "4.5.1"
     },
@@ -91,6 +124,9 @@
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
+    },
+    "pagerfanta/core": {
+        "version": "v3.6.1"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -130,6 +166,24 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "sylius-labs/polyfill-symfony-event-dispatcher": {
+        "version": "v1.1.0"
+    },
+    "sylius/grid-bundle": {
+        "version": "v1.11.0"
+    },
+    "sylius/registry": {
+        "version": "v1.6.0"
+    },
+    "sylius/resource-bundle": {
+        "version": "1.9",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.6",
+            "ref": "bfd4306c8e26b4aed0790ebde89a2c949e1398a2"
+        }
     },
     "symfony/amqp-messenger": {
         "version": "v5.4.5"
@@ -520,5 +574,29 @@
     },
     "webmozart/assert": {
         "version": "1.10.0"
+    },
+    "willdurand/hateoas": {
+        "version": "3.8.0"
+    },
+    "willdurand/hateoas-bundle": {
+        "version": "2.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "2.0",
+            "ref": "34df072c6edaa61ae19afb2f3a239f272fecab87"
+        }
+    },
+    "willdurand/jsonp-callback-validator": {
+        "version": "v2.0.0"
+    },
+    "willdurand/negotiation": {
+        "version": "3.1.0"
+    },
+    "winzou/state-machine": {
+        "version": "0.4.3"
+    },
+    "winzou/state-machine-bundle": {
+        "version": "0.6.0"
     }
 }
