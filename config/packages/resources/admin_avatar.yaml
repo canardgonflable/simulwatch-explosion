@@ -1,0 +1,6 @@
+sylius_resource:
+    resources:
+        sylius.admin_avatar:
+            classes:
+                model: App\Entity\User\AdminAvatar
+                form: App\Form\Type\User\AdminAvatarType

@@ -1,0 +1,6 @@
+sylius_resource:
+    resources:
+        sylius.start_season:
+            classes:
+                model: App\Entity\Broadcast\StartSeason
+                repository: App\Repository\StartSeasonRepository

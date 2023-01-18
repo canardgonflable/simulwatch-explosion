@@ -47,19 +47,21 @@ security:
             stateless: true
             json_login:
                 check_path: /api/authentication_token
-                #success_handler: lexik_jwt_authentication.handler.authentication_success
-                #failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
         api:
             pattern: ^/api
             provider: sylius_app_user_provider
             stateless: true
-            #entry_point: jwt
-            #jwt: true
-            #refresh_jwt:
-                #check_path: /api/token/refresh
+            entry_point: jwt
+            jwt: true
+            refresh_jwt:
+                check_path: /api/token/refresh
 
         app:
+            custom_authenticator:
+                - App\Discord\Authenticator\DiscordAuthenticator
             switch_user: true
             context: app
             pattern: /.*

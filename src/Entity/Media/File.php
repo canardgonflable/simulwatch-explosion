@@ -4,48 +4,53 @@ declare(strict_types=1);
 
 namespace App\Entity\Media;
 
-use App\Entity\IdentifiableTrait;
+use App\Traits\ResourceTrait;
+use DateTime;
+use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Monofony\Contracts\Core\Model\Media\FileInterface;
+use SplFileInfo;
 use Sylius\Component\Resource\Model\ResourceInterface;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\MappedSuperclass
  */
 abstract class File implements FileInterface, ResourceInterface
 {
-    use IdentifiableTrait;
+    use ResourceTrait;
 
+    /** @var SplFileInfo|null */
     protected ?\SplFileInfo $file = null;
 
-    #[ORM\Column(type: 'string')]
-    #[Groups(groups: ['Default', 'Detailed'])]
+    /** @var string|null */
     protected ?string $path = null;
 
-    #[ORM\Column(type: 'datetime')]
-    protected \DateTimeInterface $createdAt;
+    /** @var DateTimeInterface|DateTimeImmutable */
+    protected DateTimeInterface $createdAt;
 
-    #[ORM\Column(type: 'datetime', nullable: true)]
-    protected ?\DateTimeInterface $updatedAt = null;
+    /** @var DateTimeInterface|null */
+    protected ?DateTimeInterface $updatedAt = null;
 
     public function __construct()
     {
-        $this->createdAt = new \DateTimeImmutable();
+        $this->createdAt = new DateTimeImmutable();
     }
 
     /**
-     * {@inheritdoc}
+     * @return SplFileInfo|null
      */
-    public function getFile(): ?\SplFileInfo
+    public function getFile(): ?SplFileInfo
     {
         return $this->file;
     }
 
     /**
-     * {@inheritdoc}
+     * @param SplFileInfo|null $file
+     *
+     * @return void
      */
-    public function setFile(?\SplFileInfo $file): void
+    public function setFile(?SplFileInfo $file): void
     {
         $this->file = $file;
 
@@ -54,12 +59,12 @@ abstract class File implements FileInterface, ResourceInterface
         // otherwise the event listeners won't be called and the file is lost
         if ($file) {
             // if 'updatedAt' is not defined in your entity, use another property
-            $this->updatedAt = new \DateTime('now');
+            $this->updatedAt = new DateTime('now');
         }
     }
 
     /**
-     * {@inheritdoc}
+     * @return string|null
      */
     public function getPath(): ?string
     {
@@ -67,19 +72,24 @@ abstract class File implements FileInterface, ResourceInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param string|null $path
+     *
+     * @return void
      */
     public function setPath(?string $path): void
     {
         $this->path = $path;
     }
 
-    public function getCreatedAt(): \DateTimeInterface
+    /**
+     * @return DateTimeInterface
+     */
+    public function getCreatedAt(): DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): void
+    public function setCreatedAt(DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
     }

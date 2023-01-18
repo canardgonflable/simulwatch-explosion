@@ -1,0 +1,5 @@
+sylius_resource:
+    resources:
+        sylius.main_picture:
+            classes:
+                model: App\Entity\Anime\MainPicture

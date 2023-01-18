@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+
+    <mapped-superclass name="App\Entity\Anime\Studio" table="sylius_studio">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+        <field name="name" column="name" type="string" nullable="true" />
+        <field name="malId" column="mal_id" type="integer" nullable="true" unique="true"/>
+        <many-to-many field="animes" mapped-by="studios" target-entity="App\Model\AnimeInterface"/>
+    </mapped-superclass>
+</doctrine-mapping>

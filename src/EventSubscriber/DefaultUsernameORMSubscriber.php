@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\EventSubscriber;
 
+use App\Model\CustomerInterface;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\UnitOfWork;
-use Monofony\Contracts\Core\Model\Customer\CustomerInterface;
 use Sylius\Component\User\Model\UserInterface;
 
 /**
@@ -29,8 +29,8 @@ final class DefaultUsernameORMSubscriber implements EventSubscriber
 
     public function onFlush(OnFlushEventArgs $onFlushEventArgs): void
     {
-        $entityManager = $onFlushEventArgs->getEntityManager();
-        $unitOfWork = $entityManager->getUnitOfWork();
+        $entityManager = $onFlushEventArgs->getObjectManager();
+        $unitOfWork    = $entityManager->getUnitOfWork();
 
         $this->processEntities($unitOfWork->getScheduledEntityInsertions(), $entityManager, $unitOfWork);
         $this->processEntities($unitOfWork->getScheduledEntityUpdates(), $entityManager, $unitOfWork);

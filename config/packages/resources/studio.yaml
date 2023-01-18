@@ -1,0 +1,6 @@
+sylius_resource:
+    resources:
+        sylius.studio:
+            classes:
+                model: App\Entity\Anime\Studio
+                repository: App\Repository\StudioRepository

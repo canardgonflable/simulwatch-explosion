@@ -1,0 +1,5 @@
+App\Entity\Customer\Customer:
+    properties:
+        username:
+            - NotBlank:
+                groups: [ sylius ]

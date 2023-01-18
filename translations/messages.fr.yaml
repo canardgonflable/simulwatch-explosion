@@ -11,3 +11,28 @@ app:
 sylius:
     ui:
         show: Afficher
+        menu:
+            anime: Anime
+        anime:
+            status:
+                not_yet_aired: Pas encore diffusé
+                currently_airing: En cours de diffusion
+                finished_airing: Diffusion terminée
+            rating:
+                pg_13: PG-13
+                pg: PG
+                g: G
+                r: R
+                nc_17: NC-17
+        animes: Animes
+        manage_your_animes: Gérez vos animes
+        manage_your_studios: Gérez vos studios
+        manage_your_genres: Gérez vos genres
+        genre: Genre
+        genres: Genres
+        studio: Studio
+        studios: Studios
+        login_with_discord: Connexion avec Discord
+    form:
+        customer:
+            username: Pseudonyme

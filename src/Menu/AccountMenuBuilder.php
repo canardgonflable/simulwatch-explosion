@@ -14,12 +14,22 @@ final class AccountMenuBuilder implements AccountMenuBuilderInterface
 {
     public const EVENT_NAME = 'sylius.menu.app.account';
 
+    /**
+     * AccountMenuBuilder constructor.
+     *
+     * @param FactoryInterface         $factory
+     * @param EventDispatcherInterface $eventDispatcher
+     */
     public function __construct(
-        private FactoryInterface $factory,
-        private EventDispatcherInterface $eventDispatcher,
-    ) {
-    }
+        protected FactoryInterface $factory,
+        protected EventDispatcherInterface $eventDispatcher,
+    ) {}
 
+    /**
+     * @param array $options
+     *
+     * @return ItemInterface
+     */
     public function createMenu(array $options): ItemInterface
     {
         $menu = $this->factory->createItem('root');
@@ -28,18 +38,17 @@ final class AccountMenuBuilder implements AccountMenuBuilderInterface
         $menu
             ->addChild('dashboard', ['route' => 'sylius_frontend_account_dashboard'])
             ->setLabel('sylius.ui.dashboard')
-            ->setLabelAttribute('icon', 'home')
-        ;
+            ->setLabelAttribute('icon', 'home');
+
         $menu
             ->addChild('personal_information', ['route' => 'sylius_frontend_account_profile_update'])
             ->setLabel('sylius.ui.personal_information')
-            ->setLabelAttribute('icon', 'user')
-        ;
+            ->setLabelAttribute('icon', 'user');
+
         $menu
             ->addChild('change_password', ['route' => 'sylius_frontend_account_change_password'])
             ->setLabel('sylius.ui.change_password')
-            ->setLabelAttribute('icon', 'lock')
-        ;
+            ->setLabelAttribute('icon', 'lock');
 
         $this->eventDispatcher->dispatch(new MenuBuilderEvent($this->factory, $menu), self::EVENT_NAME);
 

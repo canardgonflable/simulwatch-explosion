@@ -1,6 +1,8 @@
 <div class="ui right stackable inverted menu">
+
     {% if is_granted('ROLE_USER') %}
-        <div class="item">{{ 'sylius.ui.hello'|trans }} {{ app.user.customer.fullName }}!</div>
+        <div class="item"><img src="{{ app.user.avatar }}" class="card-img-top"></div>
+        <div class="item">{{ 'sylius.ui.hello'|trans }} {{ app.user.username }} !</div>
         <a href="{{ path('sylius_frontend_account_dashboard') }}" class="item">{{ 'sylius.ui.my_account'|trans }}</a>
         <a href="{{ path('app_frontend_logout') }}" class="item app-logout-button">{{ 'sylius.ui.logout'|trans }}</a>
     {% else %}

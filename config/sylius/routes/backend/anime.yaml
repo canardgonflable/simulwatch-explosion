@@ -1,0 +1,15 @@
+sylius_backend_anime:
+    resource: |
+        section: backend
+        alias: sylius.anime
+        templates: 'backend/crud'
+        grid: sylius_backend_anime
+        redirect: index
+        vars:
+            all:
+                subheader: sylius.ui.manage_your_animes
+                templates:
+                    form: backend/anime/_form.html.twig
+            index:
+                icon: users
+    type: sylius.resource

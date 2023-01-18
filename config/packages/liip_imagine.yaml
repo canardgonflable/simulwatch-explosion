@@ -2,3 +2,8 @@
 liip_imagine:
     # valid drivers options include "gd" or "gmagick" or "imagick"
     driver: "gd"
+
+    filter_sets:
+        app_backend_anime_main_picture_thumbnail:
+            filters:
+                thumbnail: { size: [ 150, 150 ], mode: outbound }

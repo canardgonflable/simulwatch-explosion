@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+
+    <mapped-superclass name="App\Entity\Anime\Anime" table="sylius_anime">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+        <field name="malId" column="mal_id" type="integer" nullable="true" unique="true"/>
+        <field name="title" column="title" type="string" nullable="true"/>
+        <field name="simulwatchScore" column="simulwatch_score" type="float" nullable="true"/>
+        <field name="malScore" column="mal_score" type="float" nullable="true"/>
+        <field name="synopsis" column="synopsis" type="text" nullable="true"/>
+        <field name="mediaType" column="media_type" type="string" nullable="true"/>
+        <field name="status" column="status" type="string" nullable="true"/>
+        <field name="startDate" column="start_date" type="datetime" nullable="true"/>
+        <field name="endDate" column="end_date" type="datetime" nullable="true"/>
+        <field name="numberEpisodes" column="number_episodes" type="integer" nullable="true"/>
+        <field name="averageEpisodeDuration" column="average_episode_duration" type="integer" nullable="true"/>
+        <field name="rating" column="rating" type="string" nullable="true"/>
+
+        <one-to-one field="mainPicture" target-entity="App\Model\MainPictureInterface">
+            <join-column name="main_picture_id" referenced-column-name="id"/>
+        </one-to-one>
+
+        <one-to-one field="broadcast" target-entity="App\Model\BroadcastInterface">
+            <join-column name="broadcast_id" referenced-column-name="id"/>
+        </one-to-one>
+
+        <many-to-one field="startSeason" inversed-by="animes" target-entity="App\Model\StartSeasonInterface">
+            <join-column name="start_season_id" referenced-column-name="id"/>
+        </many-to-one>
+
+        <many-to-many field="genres" inversed-by="animes" target-entity="App\Model\GenreInterface">
+            <join-table name="sylius_animes_genres">
+                <join-columns>
+                    <join-column name="anime_id" referenced-column-name="id"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="genre_id" referenced-column-name="id"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <many-to-many field="studios" inversed-by="animes" target-entity="App\Model\StudioInterface">
+            <join-table name="sylius_animes_studios">
+                <join-columns>
+                    <join-column name="anime_id" referenced-column-name="id"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="studio_id" referenced-column-name="id"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+    </mapped-superclass>
+</doctrine-mapping>

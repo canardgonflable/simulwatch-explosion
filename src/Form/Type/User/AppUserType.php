@@ -23,7 +23,6 @@ class AppUserType extends UserType
         parent::buildForm($builder, $options);
 
         $builder
-            ->remove('username')
             ->remove('email');
     }
 

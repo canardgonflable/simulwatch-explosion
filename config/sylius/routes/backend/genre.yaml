@@ -1,0 +1,15 @@
+sylius_backend_genre:
+    resource: |
+        section: backend
+        alias: sylius.genre
+        templates: 'backend/crud'
+        grid: sylius_backend_genre
+        redirect: index
+        vars:
+            all:
+                subheader: sylius.ui.manage_your_genres
+                templates:
+                    form: backend/genre/_form.html.twig
+            index:
+                icon: users
+    type: sylius.resource

@@ -1,8 +1,23 @@
 vich_uploader:
     db_driver: orm
 
+    metadata:
+        type: yaml
+        auto_detection: false # omit this line if the previously described auto-discovery is still needed
+        directories:
+            - { path: '%kernel.project_dir%/config/packages/vich_uploader', namespace_prefix: 'App' }
     #mappings:
     #    products:
     #        uri_prefix: /images/products
     #        upload_destination: '%kernel.project_dir%/public/images/products'
     #        namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+    mappings:
+        main_picture:
+            uri_prefix: /media/main_picture
+            upload_destination: '%kernel.project_dir%/public/media/main_picture'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+
+            inject_on_load: true
+            delete_on_update: true
+            delete_on_remove: true

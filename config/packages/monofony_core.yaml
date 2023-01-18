@@ -1,5 +1,4 @@
 imports:
-    - { resource: '../sylius/resources.yaml' }
     - { resource: "@SyliusCustomerBundle/Resources/config/app/config.yml" }
     - { resource: "@SyliusUserBundle/Resources/config/app/config.yml" }
 
@@ -28,13 +27,6 @@ liip_imagine:
             filters:
                 thumbnail: { size: [50, 50], mode: outbound }
 
-sylius_customer:
-    resources:
-        customer:
-            classes:
-                model: App\Entity\Customer\Customer
-                repository: App\Repository\CustomerRepository
-
 sylius_mailer:
     sender:
         name: '%email_name%'
@@ -56,27 +48,6 @@ sylius_mailer:
 security:
     password_hashers:
         argon2i: argon2id
-
-sylius_user:
-    resources:
-        app:
-            user:
-                classes:
-                    model: App\Entity\User\AppUser
-                    repository: App\Repository\UserRepository
-                    form: App\Form\Type\User\AppUserType
-        admin:
-            user:
-                classes:
-                    model: App\Entity\User\AdminUser
-                    repository: Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository
-                    form: App\Form\Type\User\AdminUserType
-        admin_oauth:
-            user:
-                classes:
-                    model: Sylius\Component\User\Model\UserOAuth
-                    interface: Sylius\Component\User\Model\UserOAuthInterface
-                    controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
 
 vich_uploader:
     mappings:

@@ -22,8 +22,7 @@ final class AdminAvatarType extends AbstractType
         $builder
             ->add('file', FileType::class, [
                 'label' => false,
-            ])
-        ;
+            ]);
     }
 
     /**
@@ -34,8 +33,7 @@ final class AdminAvatarType extends AbstractType
         $resolver
             ->setDefaults([
                 'data_class' => AdminAvatar::class,
-            ])
-        ;
+            ]);
     }
 
     /**

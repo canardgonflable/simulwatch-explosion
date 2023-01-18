@@ -30,8 +30,11 @@ use Zenstruck\Foundry\RepositoryProxy;
  * @method static        UserRepository|RepositoryProxy repository()
  * @method AppUser|Proxy create(array|callable $attributes = [])
  */
-final class AppUserFactory extends ModelFactory
+class AppUserFactory extends ModelFactory
 {
+    /**
+     * @return array|mixed[]
+     */
     protected function getDefaults(): array
     {
         return [
@@ -46,6 +49,9 @@ final class AppUserFactory extends ModelFactory
         ];
     }
 
+    /**
+     * @return $this
+     */
     protected function initialize(): self
     {
         return $this

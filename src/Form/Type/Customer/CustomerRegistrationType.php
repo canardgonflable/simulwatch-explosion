@@ -16,7 +16,6 @@ final class CustomerRegistrationType extends AbstractResourceType
         parent::__construct(Customer::class, [
             'sylius',
             'sylius_user_registration',
-            'sylius_customer_profile',
         ]);
     }
 
@@ -29,9 +28,11 @@ final class CustomerRegistrationType extends AbstractResourceType
 
         $builder
             ->add('firstName', TextType::class, [
+                'required' => false,
                 'label' => 'sylius.form.customer.first_name',
             ])
             ->add('lastName', TextType::class, [
+                'required' => false,
                 'label' => 'sylius.form.customer.last_name',
             ])
             ->add('phoneNumber', TextType::class, [

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+
+    <mapped-superclass name="App\Entity\Broadcast\Broadcast" table="sylius_broadcast">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+        <field name="dayOfTheWeek" column="day_of_the_week" type="string" nullable="true" />
+        <field name="startTime" column="start_time" type="string" nullable="true" />
+
+    </mapped-superclass>
+</doctrine-mapping>

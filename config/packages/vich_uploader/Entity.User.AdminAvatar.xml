@@ -1,0 +1,5 @@
+<vich_uploader xmlns="https://vich-uploader-bundle/schema/"
+        class="App\Entity\User\AdminAvatar">
+<field mapping="admin_avatar" name="file" filename_property="path"/>
+
+</vich_uploader>

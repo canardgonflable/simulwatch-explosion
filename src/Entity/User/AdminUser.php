@@ -4,23 +4,26 @@ declare(strict_types=1);
 
 namespace App\Entity\User;
 
-use Doctrine\ORM\Mapping as ORM;
+use App\Model\AdminUserInterface;
 use Monofony\Contracts\Core\Model\User\AdminAvatarInterface;
-use Monofony\Contracts\Core\Model\User\AdminUserInterface;
 use Sylius\Component\User\Model\User as BaseUser;
 
-#[ORM\Entity]
-#[ORM\Table(name: 'sylius_admin_user')]
+/**
+ * Class AdminUser
+ * @package App\Entity\User
+ *
+ * @author  Clément Magnin <cma.asdoria@gmail.com>
+ */
 class AdminUser extends BaseUser implements AdminUserInterface
 {
-    #[ORM\Column(type: 'string', nullable: true)]
-    private ?string $lastName = null;
+    /** @var string|null */
+    protected ?string $lastName = null;
 
-    #[ORM\Column(type: 'string', nullable: true)]
-    private ?string $firstName = null;
+    /** @var string|null */
+    protected ?string $firstName = null;
 
-    #[ORM\OneToOne(targetEntity: AdminAvatar::class, cascade: ['persist'])]
-    private ?AdminAvatarInterface $avatar = null;
+    /** @var AdminAvatarInterface|null */
+    protected ?AdminAvatarInterface $avatar = null;
 
     public function __construct()
     {
@@ -29,31 +32,55 @@ class AdminUser extends BaseUser implements AdminUserInterface
         $this->roles = [self::DEFAULT_ADMIN_ROLE];
     }
 
+    /**
+     * @return string|null
+     */
     public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
+    /**
+     * @param string|null $lastName
+     *
+     * @return void
+     */
     public function setLastName(?string $lastName): void
     {
         $this->lastName = $lastName;
     }
 
+    /**
+     * @return string|null
+     */
     public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
+    /**
+     * @param string|null $firstName
+     *
+     * @return void
+     */
     public function setFirstName(?string $firstName): void
     {
         $this->firstName = $firstName;
     }
 
+    /**
+     * @return AdminAvatarInterface|null
+     */
     public function getAvatar(): ?AdminAvatarInterface
     {
         return $this->avatar;
     }
 
+    /**
+     * @param AdminAvatarInterface|null $avatar
+     *
+     * @return void
+     */
     public function setAvatar(?AdminAvatarInterface $avatar): void
     {
         $this->avatar = $avatar;

@@ -1,0 +1,61 @@
+sylius_grid:
+    grids:
+        sylius_backend_anime:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: App\Entity\Anime\Anime
+            sorting:
+                title: desc
+            fields:
+                mainPicture:
+                    type: twig
+                    label: sylius.ui.image
+                    path: mainPicture
+                    options:
+                        template: "@SyliusUi/Grid/Field/image.html.twig"
+                title:
+                    type: string
+                    label: sylius.ui.title
+                    sortable: ~
+                genres:
+                    type: twig
+                    label: sylius.ui.genre
+                    path: genres
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/genres.html.twig"
+                studio:
+                    type: twig
+                    label: sylius.ui.studio
+                    sortable: ~
+                    path: studios
+                    options:
+                        template: "@SyliusUi/Grid/Field/studios.html.twig"
+                status:
+                    type: twig
+                    label: sylius.ui.status
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/status.html.twig"
+                rating:
+                    type: twig
+                    label: sylius.ui.rating
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/rating.html.twig"
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [ title, status ]
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

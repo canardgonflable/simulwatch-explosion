@@ -13,6 +13,7 @@ var build = (name, assetPath, vendorUiPath) => {
         .enableVersioning(Encore.isProduction())
         // uncomment to define the assets of the project
         .addEntry('app', `${assetPath}/js/app.js`)
+
         // uncomment if you use Sass/SCSS files
         .enableSassLoader((options) => {
             options.additionalData = '@import "~semantic-ui-css/semantic.min.css";';
@@ -34,6 +35,10 @@ var build = (name, assetPath, vendorUiPath) => {
             fonts: 'font/[name].[hash:8].[ext]'
         })
     ;
+
+    if (name === 'frontend') {
+        Encore.addEntry('check', `${assetPath}/js/check.js`)
+    }
 
     const config = Encore.getWebpackConfig();
     config.name = name;

@@ -1,0 +1,15 @@
+sylius_backend_studio:
+    resource: |
+        section: backend
+        alias: sylius.studio
+        templates: 'backend/crud'
+        grid: sylius_backend_studio
+        redirect: index
+        vars:
+            all:
+                subheader: sylius.ui.manage_your_studios
+                templates:
+                    form: backend/studio/_form.html.twig
+            index:
+                icon: users
+    type: sylius.resource

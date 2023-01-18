@@ -1,0 +1,6 @@
+sylius_resource:
+    resources:
+        sylius.broadcast:
+            classes:
+                model: App\Entity\Broadcast\Broadcast
+                repository: App\Repository\BroadcastRepository

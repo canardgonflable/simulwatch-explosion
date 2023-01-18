@@ -1,0 +1,8 @@
+sylius_user:
+    resources:
+        app:
+            user:
+                classes:
+                    model: App\Entity\User\AppUser
+                    repository: App\Repository\UserRepository
+                    form: App\Form\Type\User\AppUserType

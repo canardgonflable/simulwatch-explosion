@@ -8,3 +8,6 @@ sylius_security:
 app_frontend_partial:
   resource: "partial.yaml"
   prefix: "/_partial"
+
+sylius_discord:
+  resource: "discord.yaml"
