@@ -8,6 +8,7 @@ use App\Entity\User\AppUser;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 final class AppUserRegistrationType extends AbstractResourceType
@@ -23,6 +24,9 @@ final class AppUserRegistrationType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('username', TextType::class, [
+                'label' => 'sylius.form.app_user.username',
+            ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => ['label' => 'sylius.form.user.password.label'],

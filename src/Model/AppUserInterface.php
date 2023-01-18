@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-use Monofony\Contracts\Core\Model\User\AppUserInterface as BaseAppUserInterface;
+use Sylius\Component\User\Model\UserInterface;
 
 /**
  * Class AppUserInterface
@@ -13,7 +13,7 @@ use Monofony\Contracts\Core\Model\User\AppUserInterface as BaseAppUserInterface;
  *
  * @author  Clément Magnin <cma.asdoria@gmail.com>
  */
-interface AppUserInterface extends BaseAppUserInterface
+interface AppUserInterface extends UserInterface
 {
     /**
      * @return string|null

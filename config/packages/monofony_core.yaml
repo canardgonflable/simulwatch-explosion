@@ -1,5 +1,4 @@
 imports:
-    - { resource: "@SyliusCustomerBundle/Resources/config/app/config.yml" }
     - { resource: "@SyliusUserBundle/Resources/config/app/config.yml" }
 
 framework:

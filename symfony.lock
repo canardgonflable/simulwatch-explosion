@@ -166,15 +166,6 @@
             "ref": "8d32c12797d022e670e2e9b8416c00235089ef06"
         }
     },
-    "monofony/api-meta": {
-        "version": "0.9",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "main",
-            "version": "0.8",
-            "ref": "b9fd776a767cdd112e60a83aae97a892baf5905d"
-        }
-    },
     "monofony/core-bundle": {
         "version": "v0.9.0-alpha.2"
     },

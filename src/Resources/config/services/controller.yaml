@@ -4,5 +4,4 @@ services:
         public: true
         arguments:
             $discordApiService: '@App\Discord\Service\DiscordApiService'
-            $customerRepository: '@sylius.repository.customer'
             $userRepository: '@sylius.repository.app_user'

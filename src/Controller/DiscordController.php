@@ -5,13 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Discord\Service\DiscordApiService;
-use App\Entity\Customer\Customer;
 use App\Entity\User\AppUser;
-use App\Repository\Model\CustomerRepositoryInterface;
 use App\Repository\Model\UserRepositoryInterface;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
-use Sylius\Component\Resource\Factory\Factory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,13 +26,11 @@ class DiscordController extends AbstractController
     /**
      * DiscordController constructor.
      *
-     * @param DiscordApiService           $discordApiService
-     * @param CustomerRepositoryInterface $customerRepository
-     * @param UserRepositoryInterface     $userRepository
+     * @param DiscordApiService       $discordApiService
+     * @param UserRepositoryInterface $userRepository
      */
     public function __construct(
         protected DiscordApiService $discordApiService,
-        protected CustomerRepositoryInterface $customerRepository,
         protected UserRepositoryInterface $userRepository
     ) {}
 
@@ -95,18 +88,8 @@ class DiscordController extends AbstractController
             ]);
         }
 
-        $customer = new Customer();
-
-        $customer->setEmail($discordUser->email);
-        $customer->setEmailCanonical($discordUser->email);
-
-        $this->customerRepository->add($customer);
-
         $appUser = new AppUser();
 
-        $appUser->setCustomer($customer);
-        $appUser->setEmail($discordUser->email);
-        $appUser->setEmailCanonical($discordUser->email);
         $appUser->setAccessToken($accessToken);
         $appUser->setUsername($discordUser->username);
         $appUser->setAvatar($discordUser->avatar);

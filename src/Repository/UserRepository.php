@@ -34,9 +34,8 @@ class UserRepository extends BaseUserRepository implements UserRepositoryInterfa
      */
     public function findOneByEmail(string $email): ?UserInterface
     {
-        return $this->createQueryBuilder('o')
-            ->innerJoin('o.customer', 'customer')
-            ->andWhere('customer.emailCanonical = :email')
+        return $this->createQueryBuilder('u')
+            ->where('u.emailCanonical = :email')
             ->setParameter('email', $email)
             ->getQuery()
             ->getOneOrNullResult();

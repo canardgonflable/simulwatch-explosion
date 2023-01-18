@@ -18,14 +18,14 @@ app_frontend_register:
     path: /register
     methods: [GET, POST]
     defaults:
-        _controller: sylius.controller.customer::createAction
+        _controller: sylius.controller.app_user::createAction
         _sylius:
-            form: App\Form\Type\Customer\CustomerRegistrationType
+            form: App\Form\Type\User\AppUserRegistrationType
             event: register
             template: frontend/security/register.html.twig
             redirect:
                 route: app_frontend_homepage
-            flash: sylius.customer.register
+            flash: sylius.app_user.register
 
 sylius_user_request_password_reset_token:
     path: /forgotten-password

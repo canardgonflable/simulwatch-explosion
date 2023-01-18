@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Entity\User;
 
 use App\Model\AppUserInterface;
-use App\Model\CustomerInterface;
 use Sylius\Component\Resource\Exception\UnexpectedTypeException;
 use Sylius\Component\User\Model\User as BaseUser;
 
@@ -25,9 +24,6 @@ class AppUser extends BaseUser implements AppUserInterface
 
     /** @var string|null */
     protected ?string $accessToken = null;
-
-    /** @var CustomerInterface|null */
-    protected ?CustomerInterface $customer = null;
 
     /**
      * @return string|null
@@ -75,68 +71,5 @@ class AppUser extends BaseUser implements AppUserInterface
     public function setAccessToken(?string $accessToken): void
     {
         $this->accessToken = $accessToken;
-    }
-
-    /**
-     * @return CustomerInterface|null
-     */
-    public function getCustomer(): ?CustomerInterface
-    {
-        return $this->customer;
-    }
-
-    /**
-     * @param $customer
-     *
-     * @return void
-     */
-    public function setCustomer($customer): void
-    {
-        $this->customer = $customer;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getEmail(): ?string
-    {
-        return $this->customer?->getEmail();
-
-    }
-
-    /**
-     * @param string|null $email
-     *
-     * @return void
-     */
-    public function setEmail(?string $email): void
-    {
-        if (null === $this->customer) {
-            throw new UnexpectedTypeException($this->customer, CustomerInterface::class);
-        }
-
-        $this->customer->setEmail($email);
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getEmailCanonical(): ?string
-    {
-        return $this->customer?->getEmailCanonical();
-    }
-
-    /**
-     * @param string|null $emailCanonical
-     *
-     * @return void
-     */
-    public function setEmailCanonical(?string $emailCanonical): void
-    {
-        if (null === $this->customer) {
-            throw new UnexpectedTypeException($this->customer, CustomerInterface::class);
-        }
-
-        $this->customer->setEmailCanonical($emailCanonical);
     }
 }

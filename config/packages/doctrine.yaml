@@ -24,12 +24,6 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Resources/config/doctrine/User'
                 prefix: 'App\Entity\User'
                 alias: EntityUser
-            EntityCustomer:
-                is_bundle: false
-                type: xml
-                dir: '%kernel.project_dir%/src/Resources/config/doctrine/Customer'
-                prefix: 'App\Entity\Customer'
-                alias: EntityCustomer
             EntityAnime:
                 is_bundle: false
                 type: xml
@@ -42,9 +36,3 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Resources/config/doctrine/Broadcast'
                 prefix: 'App\Entity\Broadcast'
                 alias: EntityBroadcast
-            EntityRefreshToken:
-                is_bundle: false
-                type: xml
-                dir: '%kernel.project_dir%/src/Resources/config/doctrine/RefreshToken'
-                prefix: 'App\Entity\RefreshToken'
-                alias: EntityRefreshToken

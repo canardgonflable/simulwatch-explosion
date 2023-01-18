@@ -1,0 +1,24 @@
+sylius_backend_app_user:
+    resource: |
+        section: backend
+        alias: sylius.app_user
+        templates: 'backend/crud'
+        grid: sylius_backend_app_user
+        redirect: index
+        vars:
+            all:
+                subheader: sylius.ui.manage_your_app_users
+                templates:
+                    form: backend/app_user/_form.html.twig
+            index:
+                icon: users
+    type: sylius.resource
+
+sylius_backend_app_user_show:
+    path: /app-users/{id}
+    defaults:
+        _controller: sylius.controller.app_user::showAction
+        _sylius:
+            section: backend
+            template: backend/app_user/show.html.twig
+            permission: true

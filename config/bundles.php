@@ -12,7 +12,6 @@ return [
     Sylius\Bundle\ResourceBundle\SyliusResourceBundle::class => ['all' => true],
     FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle::class => ['test' => true],
     Sylius\Bundle\MailerBundle\SyliusMailerBundle::class => ['all' => true],
-    Sylius\Bundle\CustomerBundle\SyliusCustomerBundle::class => ['all' => true],
     Sylius\Bundle\UserBundle\SyliusUserBundle::class => ['all' => true],
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
     Monofony\Bundle\CoreBundle\MonofonyCoreBundle::class => ['all' => true],

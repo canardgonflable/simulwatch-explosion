@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Dashboard\Statistics;
 
 use App\Repository\CustomerRepository;
+use App\Repository\Model\UserRepositoryInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Monofony\Component\Admin\Dashboard\Statistics\StatisticInterface;
@@ -24,11 +25,11 @@ class CustomerStatistic implements StatisticInterface
     /**
      * CustomerStatistic constructor.
      *
-     * @param CustomerRepository $customerRepository
-     * @param Environment        $twig
+     * @param UserRepositoryInterface $customerRepository
+     * @param Environment             $twig
      */
     public function __construct(
-        protected CustomerRepository $customerRepository,
+        protected UserRepositoryInterface $userRepository,
         protected Environment $twig,
     ) {}
 
@@ -37,15 +38,13 @@ class CustomerStatistic implements StatisticInterface
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
-     * @throws NoResultException
-     * @throws NonUniqueResultException
      */
     public function generate(): string
     {
-        $amountCustomers = $this->customerRepository->countCustomers();
+        $amountUsers = count($this->userRepository->findAll());
 
-        return $this->twig->render('backend/dashboard/statistics/_amount_of_customers.html.twig', [
-            'amountOfCustomers' => $amountCustomers,
+        return $this->twig->render('backend/dashboard/statistics/_amount_of_users.html.twig', [
+            'amountOfUsers' => $amountUsers,
         ]);
     }
 
