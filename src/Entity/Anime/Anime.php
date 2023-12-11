@@ -13,7 +13,6 @@ use App\Traits\ResourceTrait;
 use App\Traits\StartSeasonTrait;
 use App\Traits\StudiosTrait;
 use DateTimeInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
  * Class Anime

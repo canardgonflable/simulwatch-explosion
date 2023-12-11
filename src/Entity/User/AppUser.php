@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Entity\User;
 
 use App\Model\AppUserInterface;
-use Sylius\Component\Resource\Exception\UnexpectedTypeException;
 use Sylius\Component\User\Model\User as BaseUser;
 
 /**
@@ -28,9 +27,17 @@ class AppUser extends BaseUser implements AppUserInterface
     /**
      * @return string|null
      */
-    public function getAvatar(): ?string
+    public function getAvatarUrl(): ?string
     {
         return "https://cdn.discordapp.com/avatars/{$this->discordId}/{$this->avatar}.webp";
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
     }
 
     /**

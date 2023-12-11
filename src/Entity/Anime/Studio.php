@@ -9,7 +9,6 @@ use App\Traits\AnimesTrait;
 use App\Traits\MalIdTrait;
 use App\Traits\NamingTrait;
 use App\Traits\ResourceTrait;
-use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
  * Class Studio

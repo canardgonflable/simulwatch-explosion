@@ -2,8 +2,8 @@
 
 {% set breadcrumbs = [
     { label: 'sylius.ui.administration'|trans, url: path('app_backend_dashboard') },
-    { label: 'sylius.ui.customers'|trans, url: path('sylius_backend_customer_index') },
-    { label: customer.email }
+    { label: 'sylius.ui.app_users'|trans, url: path('sylius_backend_app_user_index') },
+    { label: app_user.username }
 ] %}
 
 {{ breadcrumb.crumble(breadcrumbs) }}

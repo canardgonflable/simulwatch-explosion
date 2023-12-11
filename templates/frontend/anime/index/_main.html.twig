@@ -1,0 +1,22 @@
+{% import '@SyliusUi/Macro/messages.html.twig' as messages %}
+{% import '@SyliusUi/Macro/pagination.html.twig' as pagination %}
+
+{{ sylius_template_event('sylius.anime.index.search', _context) }}
+
+<div class="ui clearing hidden divider"></div>
+
+{{ sylius_template_event('sylius.anime.index.before_list', {'products': resources.data}) }}
+{% if resources.data|length > 0 %}
+    <div class="ui three cards" id="animes" {{ sylius_test_html_attribute('animes') }}>
+        {% for anime in resources.data %}
+            {% include 'frontend/anime/_box.html.twig' %}
+        {% endfor %}
+    </div>
+    <div class="ui hidden divider"></div>
+
+    {{ sylius_template_event('sylius.anime.index.before_pagination', {'animes': resources.data}) }}
+
+    {{ pagination.simple(resources.data) }}
+{% else %}
+    {{ messages.info('sylius.ui.no_results_to_display') }}
+{% endif %}

@@ -3,17 +3,17 @@
 {% import '@SyliusUi/Macro/labels.html.twig' as label %}
 {% import '@SyliusUi/Macro/buttons.html.twig' as buttons %}
 
-{% block title %}{{ parent() }} {{ 'sylius.ui.customer'|trans ~' '~ customer.email }}{% endblock %}
+{% block title %}{{ parent() }} {{ 'sylius.ui.app_user'|trans ~' '~ app_user.username }}{% endblock %}
 
 {% block content %}
     <div class="ui stackable two column grid">
-        {% include 'backend/customer/show/_header.html.twig' %}
+        {% include 'backend/app_user/show/_header.html.twig' %}
     </div>
 
     <div class="ui divider"></div>
-    {% include 'backend/customer/show/_breadcrumb.html.twig' %}
+    {% include 'backend/app_user/show/_breadcrumb.html.twig' %}
 
     <div class="ui stackable grid">
-        {% include 'backend/customer/show/_content.html.twig' %}
+        {% include 'backend/app_user/show/_content.html.twig' %}
     </div>
 {% endblock %}

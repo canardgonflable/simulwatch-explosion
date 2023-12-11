@@ -2,6 +2,3 @@ services:
     app.controller.discord:
         class: App\Controller\DiscordController
         public: true
-        arguments:
-            $discordApiService: '@App\Discord\Service\DiscordApiService'
-            $userRepository: '@sylius.repository.app_user'

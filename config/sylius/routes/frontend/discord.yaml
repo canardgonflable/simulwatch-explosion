@@ -1,15 +1,11 @@
 sylius_frontend_oauth_discord_login:
-    path: /discord/login
-    methods: [POST]
+    path: /login
+    methods: [GET]
     defaults:
         _controller: App\Controller\DiscordController::loginAction
 
-sylius_frontend_oauth_discord_auth:
-    path: /discord/auth
+sylius_frontend_oauth_discord_start:
+    path: /start
+    methods: [POST]
     defaults:
-        _controller: App\Controller\DiscordController::authAction
-
-sylius_frontend_discord_check:
-    path: /discord/check
-    defaults:
-        _controller: App\Controller\DiscordController::checkAction
+        _controller: App\Controller\DiscordController::startAction

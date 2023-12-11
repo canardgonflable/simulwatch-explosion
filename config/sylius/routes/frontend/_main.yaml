@@ -11,3 +11,7 @@ app_frontend_partial:
 
 sylius_discord:
   resource: "discord.yaml"
+  prefix: "/auth/discord"
+
+sylius_frontend_anime:
+  resource: "anime.yaml"

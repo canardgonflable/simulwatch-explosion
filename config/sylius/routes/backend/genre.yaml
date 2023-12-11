@@ -11,5 +11,5 @@ sylius_backend_genre:
                 templates:
                     form: backend/genre/_form.html.twig
             index:
-                icon: users
+                icon: cubes
     type: sylius.resource

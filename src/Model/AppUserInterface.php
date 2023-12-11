@@ -18,6 +18,11 @@ interface AppUserInterface extends UserInterface
     /**
      * @return string|null
      */
+    public function getAvatarUrl(): ?string;
+
+    /**
+     * @return string|null
+     */
     public function getAvatar(): ?string;
 
     /**

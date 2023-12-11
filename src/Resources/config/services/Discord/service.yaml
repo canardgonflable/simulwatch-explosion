@@ -1,8 +1,0 @@
-services:
-    App\Discord\Service\DiscordApiService:
-        autowire: false
-        arguments:
-            $discordApiClient: '@http_client'
-            $serializer: '@serializer'
-            $clientId: '%env(DISCORD_CLIENT_ID)%'
-            $redirectUri: '%env(DISCORD_REDIRECT_URI)%'

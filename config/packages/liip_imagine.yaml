@@ -7,3 +7,6 @@ liip_imagine:
         app_backend_anime_main_picture_thumbnail:
             filters:
                 thumbnail: { size: [ 150, 150 ], mode: outbound }
+        app_frontend_anime_main_picture_thumbnail:
+            filters:
+                thumbnail: { size: [260, 260], mode: outbound }

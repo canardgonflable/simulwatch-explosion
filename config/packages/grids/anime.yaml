@@ -6,7 +6,7 @@ sylius_grid:
                 options:
                     class: App\Entity\Anime\Anime
             sorting:
-                title: desc
+                title: asc
             fields:
                 mainPicture:
                     type: twig
@@ -32,6 +32,12 @@ sylius_grid:
                     path: studios
                     options:
                         template: "@SyliusUi/Grid/Field/studios.html.twig"
+                media_type:
+                    type: twig
+                    label: sylius.ui.media_type
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/media_type.html.twig"
                 status:
                     type: twig
                     label: sylius.ui.status
@@ -50,6 +56,8 @@ sylius_grid:
                     label: sylius.ui.search
                     options:
                         fields: [ title, status ]
+                title:
+                    type: string
             actions:
                 main:
                     create:
@@ -59,3 +67,60 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
+
+        sylius_frontend_anime:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: App\Entity\Anime\Anime
+            sorting:
+                title: asc
+            fields:
+                mainPicture:
+                    type: twig
+                    label: sylius.ui.image
+                    path: mainPicture
+                    options:
+                        template: "@SyliusUi/Grid/Field/image.html.twig"
+                title:
+                    type: string
+                    label: sylius.ui.title
+                    sortable: ~
+                genres:
+                    type: twig
+                    label: sylius.ui.genre
+                    path: genres
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/genres.html.twig"
+                studio:
+                    type: twig
+                    label: sylius.ui.studio
+                    sortable: ~
+                    path: studios
+                    options:
+                        template: "@SyliusUi/Grid/Field/studios.html.twig"
+                media_type:
+                    type: twig
+                    label: sylius.ui.media_type
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/media_type.html.twig"
+                status:
+                    type: twig
+                    label: sylius.ui.status
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/status.html.twig"
+                rating:
+                    type: twig
+                    label: sylius.ui.rating
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/rating.html.twig"
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [ title, status ]

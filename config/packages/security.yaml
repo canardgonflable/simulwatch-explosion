@@ -42,13 +42,15 @@ security:
                 target: sylius_backend_login
 
         app:
-            custom_authenticator:
-                - App\Discord\Authenticator\DiscordAuthenticator
+            lazy: true
             switch_user: true
             context: app
             pattern: /.*
             user_checker: App\Security\UserChecker
             provider: sylius_app_user_provider
+            entry_point: form_login
+            custom_authenticator:
+                - App\Security\DiscordAuthenticator
             form_login:
                 provider: sylius_app_user_provider
                 login_path: app_frontend_login
@@ -64,7 +66,7 @@ security:
                 remember_me_parameter: _remember_me
             logout:
                 path: app_frontend_logout
-                target: app_frontend_homepage
+                target: app_frontend_login
 
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:

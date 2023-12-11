@@ -5,7 +5,7 @@
 </a>
 
 <br>
-<form action="{{ path('sylius_frontend_oauth_discord_login') }}" method="post">
+<form action="{{ path('sylius_frontend_oauth_discord_start') }}" method="post">
     <input type="hidden" name='token' value="{{ csrf_token('discord-auth') }}">
     <button class="ui big grey labeled icon fluid button" type="submit">
         <i class="discord icon"></i>

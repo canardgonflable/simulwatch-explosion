@@ -11,5 +11,5 @@ sylius_backend_anime:
                 templates:
                     form: backend/anime/_form.html.twig
             index:
-                icon: users
+                icon: tv
     type: sylius.resource

@@ -4,16 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Discord\Service\DiscordApiService;
-use App\Entity\User\AppUser;
-use App\Repository\Model\UserRepositoryInterface;
+use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 /**
  * Class DiscordController
@@ -21,85 +15,26 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
  *
  * @author  Clément Magnin <cma.asdoria@gmail.com>
  */
-class DiscordController extends AbstractController
+final class DiscordController extends AbstractController
 {
     /**
-     * DiscordController constructor.
+     * @param Request        $request
+     * @param ClientRegistry $clientRegistry
      *
-     * @param DiscordApiService       $discordApiService
-     * @param UserRepositoryInterface $userRepository
+     * @return RedirectResponse
      */
-    public function __construct(
-        protected DiscordApiService $discordApiService,
-        protected UserRepositoryInterface $userRepository
-    ) {}
-
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function loginAction(Request $request): Response
+    public function loginAction(Request $request, ClientRegistry $clientRegistry): RedirectResponse
     {
-        $token = $request->request->get('token');
-
-        if ($this->isCsrfTokenValid('discord-auth', $token)) {
-            $request->getSession()->set('discord-auth', true);
-            $scope = ['identify', 'email'];
-
-            return $this->redirect($this->discordApiService->getAuthorizationUrl($scope));
-        }
-
-        return $this->redirectToRoute('app_frontend_login');
+        return new RedirectResponse($this->generateUrl('app_frontend_login'));
     }
 
     /**
-     * @return Response
-     */
-    public function authAction(): Response
-    {
-        return $this->redirectToRoute('app_frontend_homepage');
-    }
-
-    /**
-     * @param Request $request
+     * @param ClientRegistry $clientRegistry
      *
-     * @return Response
-     * @throws ClientExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ServerExceptionInterface
-     * @throws TransportExceptionInterface
+     * @return RedirectResponse
      */
-    public function checkAction(Request $request): Response
+    public function startAction(ClientRegistry $clientRegistry): RedirectResponse
     {
-        $accessToken = $request->get('access_token');
-
-        if (!$accessToken) {
-            return $this->render('frontend/discord/check.html.twig');
-        }
-
-        $discordUser = $this->discordApiService->fetchUser($accessToken);
-
-        $user = $this->userRepository->findOneBy(['discordId' => $discordUser->id]);
-
-        if ($user) {
-            return $this->redirectToRoute('sylius_frontend_oauth_discord_auth', [
-                'accessToken' => $accessToken,
-            ]);
-        }
-
-        $appUser = new AppUser();
-
-        $appUser->setAccessToken($accessToken);
-        $appUser->setUsername($discordUser->username);
-        $appUser->setAvatar($discordUser->avatar);
-        $appUser->setDiscordId($discordUser->id);
-        $appUser->setEnabled(true);
-
-        $this->userRepository->add($appUser);
-
-        return $this->redirectToRoute('sylius_frontend_oauth_discord_auth', [
-            'accessToken' => $accessToken,
-        ]);
+        return $clientRegistry->getClient("discord")->redirect(["identify"]);
     }
 }

@@ -147,7 +147,6 @@ class ImportAnimeCommand extends Command
             $animeRegistered->setRating($animeDetailsContent['rating'] ?? null);
 
             if (!empty($animeDetailsContent['start_date'])) {
-
                 $startDate = new DateTime($animeDetailsContent['start_date']);
                 $animeRegistered->setStartDate($startDate);
             }

@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace App\Entity\Anime;
-
 
 use App\Entity\Media\File;
 use App\Model\MainPictureInterface;

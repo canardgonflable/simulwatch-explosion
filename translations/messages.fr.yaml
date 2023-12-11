@@ -24,15 +24,31 @@ sylius:
                 g: G
                 r: R
                 nc_17: NC-17
+            media_type:
+                ona: ONA
+                music: Musique
+                tv: TV
+                movie: Film
+                ova: OVA
+
+        media_type: Type de media
+
         animes: Animes
         manage_your_animes: Gérez vos animes
         manage_your_studios: Gérez vos studios
         manage_your_genres: Gérez vos genres
+        manage_your_app_users: Gérez vos utilisateurs
         genre: Genre
         genres: Genres
         studio: Studio
         studios: Studios
         login_with_discord: Connexion avec Discord
+        app_user: Utilisateur
+        app_users: Utilisateurs
+        edit_anime: Modifier l'anime
+        edit_app_user: Modifier l'utilisateur
+        new_app_user: Nouvel utilisateur
+        app_user_details: Informations sur l'utilisateur
     form:
         customer:
             username: Pseudonyme

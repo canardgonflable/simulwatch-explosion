@@ -1,0 +1,27 @@
+<div class="eight wide column" id="info">
+    <div class="ui fluid card">
+        <div class="content">
+            <a href="{{ path('sylius_backend_app_user_update', {'id': app_user.id}) }}" class="header">
+                {{ app_user.username|default('sylius.ui.guest_app_user'|trans) }}
+            </a>
+            <div class="meta">
+                <span class="date">{{ 'sylius.ui.app_user_since'|trans }} {{ app_user.createdAt|date }}</span>
+                <br />
+            </div>
+        </div>
+        <div class="content">
+            {% if app_user.email is not null %}
+                <div id="verified-email">
+                    <i class="{{ app_user.verified ? 'green checkmark' : 'red remove' }} icon"></i>
+                    {{ 'sylius.ui.email_verified'|trans }}
+                </div>
+                <br/>
+            {% endif %}
+        </div>
+        <div class="extra content">
+            <a href="mailto:{{ app_user.email }}">
+                <i class="envelope icon"></i> {{ app_user.email }}
+            </a>
+        </div>
+    </div>
+</div>

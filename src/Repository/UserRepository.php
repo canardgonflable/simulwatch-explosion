@@ -7,14 +7,18 @@ namespace App\Repository;
 use App\Entity\User\AppUser;
 use App\Repository\Model\UserRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\NonUniqueResultException;
 use Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository as BaseUserRepository;
 use Sylius\Component\User\Model\UserInterface;
 
+/**
+ * Class UserRepository
+ * @package App\Repository
+ *
+ * @author  Clément Magnin <cma.asdoria@gmail.com>
+ */
 class UserRepository extends BaseUserRepository implements UserRepositoryInterface
 {
-
     /**
      * UserRepository constructor.
      *
@@ -22,8 +26,7 @@ class UserRepository extends BaseUserRepository implements UserRepositoryInterfa
      */
     public function __construct(protected EntityManagerInterface $entityManager)
     {
-        $meta = new ClassMetadata(AppUser::class);
-        parent::__construct($entityManager, $meta);
+        parent::__construct($entityManager, $entityManager->getClassMetadata(AppUser::class));
     }
 
     /**

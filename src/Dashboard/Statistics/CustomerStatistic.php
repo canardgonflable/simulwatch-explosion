@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\Dashboard\Statistics;
 
-use App\Repository\CustomerRepository;
 use App\Repository\Model\UserRepositoryInterface;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use Monofony\Component\Admin\Dashboard\Statistics\StatisticInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;

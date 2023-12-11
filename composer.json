@@ -2,7 +2,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "api-platform/core": "^2.6",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.8",
@@ -12,6 +12,7 @@
         "doctrine/orm": "^2.5",
         "fakerphp/faker": "^1.14",
         "gesdinet/jwt-refresh-token-bundle": "^1.0",
+        "knpuniversity/oauth2-client-bundle": "^2.17",
         "lexik/jwt-authentication-bundle": "^2.14",
         "liip/imagine-bundle": "^2.2",
         "monofony/admin": "^0.9@dev",
@@ -40,15 +41,15 @@
         "symfony/config": "^5.4 || ^6.0",
         "symfony/discord-notifier": "6.1.*",
         "symfony/dotenv": "^5.4 || ^6.0",
-        "symfony/expression-language": "6.1.*",
+        "symfony/expression-language": "6.4.*",
         "symfony/flex": "^2.0",
-        "symfony/http-client": "6.1.*",
+        "symfony/http-client": "6.4.*",
         "symfony/mailer": "^5.4 || ^6.0",
         "symfony/messenger": "^5.4 || ^6.0",
         "symfony/monolog-bundle": "^3.6",
         "symfony/process": "^5.4 || ^6.0",
-        "symfony/property-access": "6.1.*",
-        "symfony/property-info": "6.1.*",
+        "symfony/property-access": "6.4.*",
+        "symfony/property-info": "6.4.*",
         "symfony/routing": "^5.4 || ^6.0",
         "symfony/runtime": "^5.4 || ^6.0",
         "symfony/security-bundle": "6.1.*",
@@ -61,6 +62,7 @@
         "twig/twig": "^2.7",
         "vich/uploader-bundle": "^1.8",
         "webmozart/assert": "^1.9",
+        "wohali/oauth2-discord-new": "^1.2",
         "zenstruck/foundry": "^1.14"
     },
     "require-dev": {
@@ -130,7 +132,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "6.1.*",
+            "require": "6.4.*",
             "endpoint": "flex://defaults"
         }
     },

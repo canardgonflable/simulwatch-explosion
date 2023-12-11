@@ -35,6 +35,7 @@ class AdminMenuBuilder implements AdminMenuBuilderInterface
         $menu = $this->factory->createItem('root');
 
         $this->addAnimeSubMenu($menu);
+        $this->addAppUserSubMenu($menu);
         $this->addConfigurationSubMenu($menu);
 
         return $menu;
@@ -64,20 +65,35 @@ class AdminMenuBuilder implements AdminMenuBuilderInterface
      */
     private function addAnimeSubMenu(ItemInterface $menu): void
     {
-        $configuration = $menu
+        $anime = $menu
             ->addChild('anime')
             ->setLabel('sylius.ui.menu.anime');
 
-        $configuration->addChild('backend_anime', ['route' => 'sylius_backend_anime_index'])
+        $anime->addChild('backend_anime', ['route' => 'sylius_backend_anime_index'])
             ->setLabel('sylius.ui.animes')
             ->setLabelAttribute('icon', 'tv');
 
-        $configuration->addChild('backend_studio', ['route' => 'sylius_backend_studio_index'])
+        $anime->addChild('backend_studio', ['route' => 'sylius_backend_studio_index'])
             ->setLabel('sylius.ui.studios')
             ->setLabelAttribute('icon', 'building');
 
-        $configuration->addChild('backend_genre', ['route' => 'sylius_backend_genre_index'])
+        $anime->addChild('backend_genre', ['route' => 'sylius_backend_genre_index'])
             ->setLabel('sylius.ui.genres')
             ->setLabelAttribute('icon', 'cubes');
+    }
+
+    /**
+     * @param ItemInterface $menu
+     *
+     * @return void
+     */
+    private function addAppUserSubMenu(ItemInterface $menu): void{
+        $appUser = $menu
+            ->addChild('app_user')
+            ->setLabel('sylius.ui.app_user');
+
+        $appUser->addChild('backend_app_user', ['route' => 'sylius_backend_app_user_index'])
+            ->setLabel('sylius.ui.app_users')
+            ->setLabelAttribute('icon', 'users');
     }
 }

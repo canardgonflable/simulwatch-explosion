@@ -1,0 +1,13 @@
+{% extends 'frontend/layout.html.twig' %}
+
+{% block content %}
+    {% include 'frontend/anime/index/_header.html.twig' %}
+    <div class="ui stackable grid">
+        <div class="four wide column">
+            {% include 'frontend/anime/index/_sidebar.html.twig' %}
+        </div>
+        <div class="twelve wide column">
+            {% include 'frontend/anime/index/_main.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
